@@ -1,0 +1,20 @@
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%) translateY(16px);
+  opacity: 0;
+  padding: var(--space-s) var(--space-l);
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  color: #fff;
+  font-size: var(--text-xs);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

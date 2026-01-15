@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HealthMe — консультации врачей онлайн</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <a class="u-visually-hidden" href="#main">Перейти к содержимому</a>
+    <header class="app-header">
+      <div class="app-header__inner o-container">
+        <a class="app-header__brand" href="./index.html" aria-label="HealthMe">
+          HealthMe
+        </a>
+        <div class="app-header__actions" aria-label="Быстрые действия">
+          <button
+            class="app-header__action"
+            type="button"
+            aria-label="Поиск"
+            data-action="search"
+          >
+            Поиск
+          </button>
+          <button
+            class="app-header__action"
+            type="button"
+            aria-label="Уведомления"
+            data-action="notifications"
+          >
+            Уведомления
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section
+        class="hero"
+        id="hero"
+        aria-labelledby="hero-title"
+        data-reveal="hero"
+      >
+        <div class="hero__inner o-container">
+          <div class="hero__content o-stack">
+            <p class="hero__eyebrow">Онлайн‑консультации с заботой</p>
+            <h1 id="hero-title">HealthMe — врачи рядом, даже когда вы дома</h1>
+            <p class="hero__text">
+              Подберите специалиста, запишитесь на удобное время и получите
+              рекомендации без поездок в клинику
+            </p>
+            <div class="hero__actions">
+              <button
+                class="hero__cta hero__cta--primary"
+                type="button"
+                data-form-open="booking-modal"
+                aria-haspopup="dialog"
+                aria-controls="booking-modal"
+              >
+                Записаться
+              </button>
+              <a class="hero__cta" href="#doctors-title">Выбрать врача</a>
+            </div>
+          </div>
+          <div class="hero__media" aria-hidden="true">
+            <picture class="hero__picture">
+              <source
+                type="image/avif"
+                srcset="./src/assets/images/hero-illustration.avif"
+              />
+              <source
+                type="image/webp"
+                srcset="./src/assets/images/hero-illustration.webp"
+              />
+              <img
+                class="hero__image"
+                src="./src/assets/images/hero-illustration.jpg"
+                alt=""
+                width="640"
+                height="480"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="hero__card">
+              <span class="hero__card-title">Тёплая поддержка</span>
+              <span class="hero__card-text">План лечения и рекомендации</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="categories"
+        id="categories"
+        aria-labelledby="categories-title"
+        data-reveal="categories"
+      >
+        <div class="o-container o-stack">
+          <h2 id="categories-title">Категории врачей</h2>
+          <p>Выберите специализацию, чтобы увидеть доступных специалистов</p>
+          <div
+            class="categories__scroller"
+            role="tablist"
+            aria-label="Категории врачей"
+          >
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              data-category="all"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M1 1h5v5H1zM10 1h5v5h-5zM1 10h5v5H1zM10 10h5v5h-5z" />
+              </svg>
+              Все
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="therapy"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M7 2h2v5h5v2H9v5H7V9H2V7h5z" />
+              </svg>
+              Терапевт
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="pediatrics"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <circle cx="8" cy="8" r="6" />
+                <circle cx="6" cy="7" r="1" />
+                <circle cx="10" cy="7" r="1" />
+                <rect x="6" y="10" width="4" height="1" rx="0.5" />
+              </svg>
+              Педиатр
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="dermatology"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M8 1C6 4 3 6.5 3 9a5 5 0 0 0 10 0c0-2.5-3-5-5-8z" />
+              </svg>
+              Дерматолог
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="cardiology"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 14s-5-3.2-5-7a3 3 0 0 1 5-2 3 3 0 0 1 5 2c0 3.8-5 7-5 7z"
+                />
+              </svg>
+              Кардиолог
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="endocrinology"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M8 1l6 3.5v7L8 15l-6-3.5v-7z" />
+              </svg>
+              Эндокринолог
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="neurology"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M8 1l2 4 4 2-4 2-2 4-2-4-4-2 4-2z" />
+              </svg>
+              Невролог
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="psychotherapy"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path d="M2 3h12v7H6l-4 3v-3H2z" />
+              </svg>
+              Психотерапевт
+            </button>
+            <button
+              class="category-chip"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              data-category="ophthalmology"
+            >
+              <svg
+                class="category-chip__icon"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                fill="currentColor"
+              >
+                <path
+                  d="M8 3C4.7 3 2 5.2 1 8c1 2.8 3.7 5 7 5s6-2.2 7-5c-1-2.8-3.7-5-7-5zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+                />
+              </svg>
+              Офтальмолог
+            </button>
+          </div>
+          <div class="categories__pagination" aria-hidden="true"></div>
+        </div>
+      </section>
+      <section
+        class="doctors"
+        id="doctors"
+        aria-labelledby="doctors-title"
+        data-reveal="doctors"
+      >
+        <div class="o-container o-stack">
+          <h2 id="doctors-title">Специалисты</h2>
+          <p>Подберите врача под ваш запрос — консультация онлайн.</p>
+          <div class="doctors__grid" data-doctors-grid></div>
+          <p class="doctors__empty u-hidden" data-doctors-empty>
+            Сейчас нет специалистов по выбранной категории.
+          </p>
+        </div>
+      </section>
+      <section
+        class="how-it-works"
+        aria-labelledby="how-title"
+        data-reveal="how"
+      >
+        <div class="o-container o-stack">
+          <h2 id="how-title">Как это работает</h2>
+          <p>Всего четыре шага — и вы на связи со специалистом.</p>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-card__icon" aria-hidden="true">1</span>
+              <h3 class="step-card__title">Выберите специалиста</h3>
+              <p class="step-card__text">
+                Подскажем, к кому обратиться, и покажем доступных врачей по
+                направлению.
+              </p>
+            </article>
+            <article class="step-card">
+              <span class="step-card__icon" aria-hidden="true">2</span>
+              <h3 class="step-card__title">Назначьте время</h3>
+              <p class="step-card__text">
+                Подберите удобный слот и добавьте короткий комментарий о
+                самочувствии.
+              </p>
+            </article>
+            <article class="step-card">
+              <span class="step-card__icon" aria-hidden="true">3</span>
+              <h3 class="step-card__title">Получите консультацию</h3>
+              <p class="step-card__text">
+                Общайтесь с врачом в чате, задавайте вопросы и уточняйте детали.
+              </p>
+            </article>
+            <article class="step-card">
+              <span class="step-card__icon" aria-hidden="true">4</span>
+              <h3 class="step-card__title">Следуйте рекомендациям</h3>
+              <p class="step-card__text">
+                Получите персональный план и сохраняйте назначения в приложении.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        class="reviews"
+        aria-labelledby="reviews-title"
+        data-reveal="reviews"
+      >
+        <div class="o-container o-stack">
+          <h2 id="reviews-title">Отзывы пациентов</h2>
+          <p>Короткие истории от людей, которые уже пользуются HealthMe.</p>
+          <div class="reviews-slider" data-reviews>
+            <button
+              class="reviews-slider__nav reviews-slider__nav--prev"
+              type="button"
+              aria-label="Предыдущий отзыв"
+              data-reviews-prev
+            >
+              &larr;
+            </button>
+            <div class="reviews-track" data-reviews-track></div>
+            <button
+              class="reviews-slider__nav reviews-slider__nav--next"
+              type="button"
+              aria-label="Следующий отзыв"
+              data-reviews-next
+            >
+              &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        class="booking"
+        id="booking"
+        aria-labelledby="booking-title"
+        data-reveal="booking"
+      >
+        <div class="o-container o-stack">
+          <button
+            class="booking-cta"
+            type="button"
+            data-form-open="booking-modal"
+            aria-haspopup="dialog"
+            aria-controls="booking-modal"
+          >
+            Запись на консультацию
+          </button>
+          <p>Оставьте заявку — мы подтвердим время и врача в течение часа.</p>
+        </div>
+      </section>
+    </main>
+    <nav class="bottom-nav" aria-label="Основная навигация">
+      <div class="bottom-nav__inner o-container">
+        <a class="bottom-nav__link" href="#hero" aria-current="page">
+          Главная
+        </a>
+        <a class="bottom-nav__link" href="#doctors">Врачи</a>
+        <button
+          class="bottom-nav__link"
+          type="button"
+          data-form-open="booking-modal"
+          aria-haspopup="dialog"
+          aria-controls="booking-modal"
+        >
+          Запись
+        </button>
+        <a class="bottom-nav__link" href="#profile-placeholder">Профиль</a>
+      </div>
+    </nav>
+    <footer class="app-footer">
+      <div class="o-container">
+        <small>HealthMe — медицинские консультации онлайн</small>
+      </div>
+    </footer>
+    <div class="toast" role="status" aria-live="polite" data-toast>
+      Раздел профиля скоро появится.
+    </div>
+    <div class="modal" data-modal="notifications" aria-hidden="true">
+      <div class="modal__backdrop" data-modal-close></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="notifications-title"
+      >
+        <div class="modal__header">
+          <h2 id="notifications-title" class="modal__title">Уведомления</h2>
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Закрыть уведомления"
+            data-modal-close
+            data-modal-initial-focus
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__content">
+          <article class="notification-card">
+            <h3 class="notification-card__title">
+              Добро пожаловать в HealthMe
+            </h3>
+            <p>
+              Спасибо, что вы с нами. Выберите врача и запишитесь на
+              консультацию.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="booking-modal" aria-hidden="true">
+      <div class="modal__backdrop" data-form-close></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-modal-title"
+      >
+        <div class="modal__header">
+          <h2 id="booking-modal-title" class="modal__title">
+            Запись на консультацию
+          </h2>
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Закрыть форму записи"
+            data-form-close
+            data-modal-initial-focus
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__content">
+          <form class="booking-form" data-form data-state="idle">
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="name">Имя</label>
+              <input
+                class="booking-form__input"
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+                aria-describedby="name-error"
+              />
+              <span
+                class="booking-form__error"
+                id="name-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="phone">Телефон</label>
+              <input
+                class="booking-form__input"
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+3 800 000 00 00"
+                required
+                aria-describedby="phone-error"
+              />
+              <span
+                class="booking-form__error"
+                id="phone-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label
+                class="booking-form__label"
+                id="category-label"
+                for="category"
+              >
+                Категория врача
+              </label>
+              <div class="booking-form__select" data-select>
+                <select
+                  class="booking-form__input booking-form__input--native"
+                  id="category"
+                  name="category"
+                  required
+                  aria-describedby="category-error"
+                  aria-labelledby="category-label"
+                >
+                  <option value="registry">Регистратура</option>
+                  <option value="therapy">Терапевт</option>
+                  <option value="pediatrics">Педиатр</option>
+                  <option value="dermatology">Дерматолог</option>
+                  <option value="cardiology">Кардиолог</option>
+                  <option value="endocrinology">Эндокринолог</option>
+                  <option value="neurology">Невролог</option>
+                  <option value="psychotherapy">Психотерапевт</option>
+                  <option value="ophthalmology">Офтальмолог</option>
+                </select>
+                <button
+                  class="booking-form__select-trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-labelledby="category-label"
+                  data-select-trigger
+                >
+                  <span data-select-value>Регистратура</span>
+                </button>
+                <div class="booking-form__select-modal" data-select-modal>
+                  <div
+                    class="booking-form__select-backdrop"
+                    data-select-close
+                  ></div>
+                  <div class="booking-form__select-sheet">
+                    <div class="booking-form__select-sheet-header">
+                      <span class="booking-form__select-sheet-title">
+                        Категория врача
+                      </span>
+                    </div>
+                    <div
+                      class="booking-form__select-list"
+                      role="listbox"
+                      aria-labelledby="category-label"
+                      tabindex="-1"
+                      data-select-list
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <span
+                class="booking-form__error"
+                id="category-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="comment"
+                >Комментарий</label
+              >
+              <textarea
+                class="booking-form__input"
+                id="comment"
+                name="comment"
+                rows="4"
+                placeholder="Опишите симптомы или вопрос для врача."
+                aria-describedby="comment-help"
+              ></textarea>
+              <span class="booking-form__help" id="comment-help">
+                Это поможет врачу подготовиться к консультации.
+              </span>
+            </div>
+            <div class="booking-form__consent">
+              <input
+                class="booking-form__checkbox"
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+                aria-describedby="consent-error"
+              />
+              <label class="booking-form__label" for="consent">
+                Я согласен(а) на обработку персональных данных
+              </label>
+            </div>
+            <span
+              class="booking-form__error"
+              id="consent-error"
+              role="alert"
+            ></span>
+            <div class="booking-form__actions">
+              <button class="booking-form__submit" type="submit">
+                Отправить заявку
+              </button>
+              <span
+                class="booking-form__status"
+                role="status"
+                aria-live="polite"
+              >
+                Заполните форму, чтобы записаться
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="profile-placeholder" class="u-visually-hidden" aria-hidden="true">
+      Профиль пользователя
+    </div>
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
+</html>

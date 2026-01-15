@@ -1,0 +1,269 @@
+.booking-form {
+  display: grid;
+  gap: var(--space-m);
+  padding: var(--space-l);
+  border-radius: var(--radius-l);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-s);
+}
+
+.booking-form__group {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.booking-form__label {
+  font-weight: 600;
+  font-size: var(--text-xs);
+}
+
+.booking-form__input {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-xs) var(--space-s);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text);
+  font-family: inherit;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.booking-form__input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+.booking-form__select {
+  --select-arrow-size: 16px;
+  --select-arrow-color: var(--color-primary);
+  position: relative;
+}
+
+.booking-form__input--native {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.booking-form__select-trigger {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--space-xs) var(--space-s);
+  border-radius: var(--radius-m);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-s);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.booking-form__select-trigger::after {
+  display: none;
+}
+
+.booking-form__select-trigger:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--color-primary) 14%, transparent);
+}
+
+.booking-form__select-trigger:active {
+  transform: scale(var(--motion-scale-press));
+}
+
+.booking-form__select-trigger:focus-visible {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--color-primary) 25%, transparent);
+  outline: none;
+}
+
+.booking-form__select-list {
+  padding: var(--space-2xs);
+  border-radius: var(--radius-m);
+  display: grid;
+  gap: 2px;
+}
+
+.booking-form__select-option {
+  width: 100%;
+  border-radius: var(--radius-s);
+  min-height: 40px;
+  padding: 8px var(--space-s);
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: var(--text-s);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.booking-form__select-option:hover {
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+.booking-form__select-option[aria-selected="true"] {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.booking-form__select-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  align-items: end;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-fast),
+    visibility var(--transition-fast);
+  z-index: 40;
+}
+
+.booking-form__select-backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-text) 24%, transparent);
+}
+
+.booking-form__select-sheet {
+  position: relative;
+  width: 100%;
+  padding: var(--space-l);
+  border-radius: var(--radius-l) var(--radius-l) 0 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-m);
+  transform: translateY(16px);
+  transition: transform var(--transition-fast);
+  z-index: 1;
+}
+
+.booking-form__select-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-s);
+  margin-bottom: var(--space-s);
+}
+
+.booking-form__select-sheet-title {
+  font-size: var(--text-s);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.booking-form__select.is-open .booking-form__select-modal {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.booking-form__select.is-open .booking-form__select-sheet {
+  transform: translateY(0);
+}
+
+.booking-form__select.is-disabled .booking-form__select-trigger {
+  background: color-mix(in srgb, var(--color-border) 35%, #fff);
+  color: var(--color-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.booking-form__select.is-disabled .booking-form__select-trigger::after {
+  background-color: var(--color-muted);
+}
+
+.booking-form__help {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+@media (min-width: 720px) {
+  .booking-form {
+    width: min(100%, 720px);
+    margin-inline: auto;
+  }
+
+  .booking-form__select-modal {
+    align-items: center;
+    justify-items: center;
+  }
+
+  .booking-form__select-sheet {
+    width: min(92vw, 520px);
+    border-radius: var(--radius-l);
+    transform: translateY(8px);
+  }
+}
+
+@media (min-width: 1100px) {
+  .booking-form {
+    width: min(100%, 860px);
+  }
+}
+
+.booking-form__error {
+  font-size: var(--text-xs);
+  color: var(--color-danger);
+}
+
+.booking-form__consent {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+.booking-form__checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.booking-form__actions {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.booking-form__submit {
+  min-height: 48px;
+  padding: var(--space-s) var(--space-l);
+  border-radius: var(--radius-m);
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.booking-form__submit:active {
+  transform: scale(var(--motion-scale-press));
+}
+
+.booking-form__status {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.booking-form[data-state="loading"] {
+  opacity: 0.9;
+}
+
+.booking-form[data-state="loading"] .booking-form__submit {
+  cursor: progress;
+}

@@ -1,0 +1,47 @@
+:root {
+  color-scheme: light;
+  --color-bg: #f7f4ef;
+  --color-surface: #ffffff;
+  --color-text: #1f2a2e;
+  --color-muted: #6b6a67;
+  --color-primary: #2f7f78;
+  --color-primary-soft: #d9efea;
+  --color-accent: #f3b88c;
+  --color-success: #2f7d58;
+  --color-danger: #b94b4b;
+  --color-border: #e3dfd9;
+
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+
+  --radius-s: 10px;
+  --radius-m: 14px;
+  --radius-l: 18px;
+  --radius-pill: 999px;
+
+  --shadow-s: 0 8px 18px rgba(20, 24, 22, 0.08);
+  --shadow-m: 0 14px 28px rgba(20, 24, 22, 0.12);
+
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-s: 12px;
+  --space-m: 16px;
+  --space-l: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  --space-fluid-s: clamp(12px, 2.2vw, 18px);
+  --space-fluid-m: clamp(16px, 3.2vw, 28px);
+  --space-fluid-l: clamp(24px, 4vw, 36px);
+
+  --text-xs: clamp(0.78rem, 2.2vw, 0.9rem);
+  --text-s: clamp(0.9rem, 2.4vw, 1rem);
+  --text-m: clamp(1rem, 2.6vw, 1.1rem);
+  --text-l: clamp(1.2rem, 3vw, 1.4rem);
+  --text-xl: clamp(1.6rem, 4.6vw, 2.2rem);
+  --text-2xl: clamp(2rem, 6vw, 2.8rem);
+
+  --transition-fast: 180ms ease;
+  --transition-base: 260ms ease;
+  --transition-slow: 420ms ease;
+}

@@ -1,0 +1,15 @@
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #121716;
+  --color-surface: #1b221f;
+  --color-text: #f4f3f0;
+  --color-muted: #a4a29d;
+  --color-primary: #7cc9c0;
+  --color-primary-soft: #20312e;
+  --color-accent: #f0b17a;
+  --color-success: #7ccf9c;
+  --color-danger: #f0a1a1;
+  --color-border: #2b3632;
+  --shadow-s: 0 10px 20px rgba(7, 10, 9, 0.5);
+  --shadow-m: 0 18px 36px rgba(7, 10, 9, 0.6);
+}

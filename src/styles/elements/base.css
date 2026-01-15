@@ -1,0 +1,24 @@
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-m);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+main {
+  display: block;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-primary-soft);
+}

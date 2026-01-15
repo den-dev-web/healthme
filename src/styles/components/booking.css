@@ -1,0 +1,21 @@
+.booking {
+  padding-block: var(--space-xl);
+}
+
+.booking-cta {
+  min-height: 56px;
+  padding: var(--space-s) var(--space-l);
+  border-radius: var(--radius-m);
+  border: 1px solid transparent;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--text-m);
+  box-shadow: var(--shadow-m);
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.booking-cta:active {
+  transform: scale(var(--motion-scale-press));
+}

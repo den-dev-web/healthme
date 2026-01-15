@@ -1,0 +1,22 @@
+.o-container {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.o-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+.o-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.o-grid {
+  display: grid;
+  gap: var(--space-m);
+}

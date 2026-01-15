@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HealthMe — профиль врача</title>
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <a class="u-visually-hidden" href="#main">Перейти к содержимому</a>
+    <header class="app-header">
+      <div class="app-header__inner o-container">
+        <a class="app-header__brand" href="./index.html" aria-label="HealthMe">
+          HealthMe
+        </a>
+        <div class="app-header__actions" aria-label="Быстрые действия">
+          <button
+            class="app-header__action"
+            type="button"
+            aria-label="Поиск"
+            data-action="search"
+          >
+            Поиск
+          </button>
+          <button
+            class="app-header__action"
+            type="button"
+            aria-label="Уведомления"
+            data-action="notifications"
+          >
+            Уведомления
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <div class="doctor-profile__back o-container">
+        <a class="doctor-profile__back-link" href="./index.html#doctors">
+          ← К списку специалистов
+        </a>
+      </div>
+      <section
+        class="doctor-profile"
+        aria-labelledby="doctor-title"
+        data-reveal="doctor"
+      >
+        <div class="doctor-profile__inner o-container">
+          <div class="doctor-profile__card">
+            <div class="doctor-profile__avatar">
+              <picture class="doctor-profile__picture">
+                <source
+                  type="image/avif"
+                  srcset="./src/assets/images/doctor-placeholder.avif"
+                  data-doctor-source-avif
+                />
+                <source
+                  type="image/webp"
+                  srcset="./src/assets/images/doctor-placeholder.webp"
+                  data-doctor-source-webp
+                />
+                <img
+                  class="doctor-profile__photo"
+                  src="./src/assets/images/doctor-placeholder.jpg"
+                  alt=""
+                  width="88"
+                  height="88"
+                  loading="lazy"
+                  decoding="async"
+                  data-doctor-avatar
+                />
+              </picture>
+            </div>
+            <div class="doctor-profile__info">
+              <h1
+                id="doctor-title"
+                class="doctor-profile__name"
+                data-doctor-name
+              >
+                Профиль врача
+              </h1>
+              <div class="doctor-profile__details">
+                <p class="doctor-profile__specialty" data-doctor-specialty></p>
+                <div class="doctor-profile__meta">
+                  <span
+                    class="doctor-card__meta-item"
+                    data-doctor-experience
+                  ></span>
+                  <span
+                    class="doctor-card__meta-item doctor-card__meta-item--rating"
+                    data-doctor-rating
+                  ></span>
+                </div>
+              </div>
+              <div class="doctor-profile__price" data-doctor-price></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="doctor-about"
+        aria-labelledby="doctor-about-title"
+        data-reveal="doctor-about"
+      >
+        <div class="o-container o-stack">
+          <h2 id="doctor-about-title">О специалисте</h2>
+          <p data-doctor-description></p>
+        </div>
+      </section>
+      <section
+        class="reviews"
+        aria-labelledby="doctor-reviews-title"
+        data-reveal="doctor-reviews"
+      >
+        <div class="o-container o-stack">
+          <h2 id="doctor-reviews-title">Отзывы пациентов</h2>
+          <p>Реальные истории и впечатления от онлайн‑консультаций.</p>
+          <div class="reviews-slider" data-reviews>
+            <button
+              class="reviews-slider__nav reviews-slider__nav--prev"
+              type="button"
+              aria-label="Предыдущий отзыв"
+              data-reviews-prev
+            >
+              &larr;
+            </button>
+            <div class="reviews-track" data-reviews-track></div>
+            <button
+              class="reviews-slider__nav reviews-slider__nav--next"
+              type="button"
+              aria-label="Следующий отзыв"
+              data-reviews-next
+            >
+              &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        class="doctor-schedule"
+        aria-labelledby="doctor-schedule-title"
+        data-reveal="doctor-schedule"
+      >
+        <div class="o-container o-stack">
+          <h2 id="doctor-schedule-title">Расписание</h2>
+          <p>Выберите удобный слот консультации.</p>
+          <div class="schedule-grid" data-schedule></div>
+        </div>
+      </section>
+      <section
+        class="doctor-booking"
+        aria-labelledby="doctor-booking-title"
+        data-reveal="doctor-booking"
+      >
+        <div class="o-container o-stack">
+          <button
+            class="booking-cta"
+            type="button"
+            data-form-open="doctor-booking-modal"
+            aria-haspopup="dialog"
+            aria-controls="doctor-booking-modal"
+          >
+            Запись на консультацию
+          </button>
+          <p>Оставьте заявку — мы подтвердим время и врача в течение часа.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="app-footer">
+      <div class="o-container">
+        <small>HealthMe — медицинские консультации онлайн.</small>
+      </div>
+    </footer>
+    <div class="modal" data-modal="notifications" aria-hidden="true">
+      <div class="modal__backdrop" data-modal-close></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="notifications-title"
+      >
+        <div class="modal__header">
+          <h2 id="notifications-title" class="modal__title">Уведомления</h2>
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Закрыть уведомления"
+            data-modal-close
+            data-modal-initial-focus
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__content">
+          <article class="notification-card">
+            <h3 class="notification-card__title">
+              Добро пожаловать в HealthMe
+            </h3>
+            <p>
+              Спасибо, что вы с нами. Выберите врача и запишитесь на
+              консультацию.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="doctor-booking-modal" aria-hidden="true">
+      <div class="modal__backdrop" data-form-close></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="doctor-booking-modal-title"
+      >
+        <div class="modal__header">
+          <h2 id="doctor-booking-modal-title" class="modal__title">
+            Запись на консультацию
+          </h2>
+          <button
+            class="modal__close"
+            type="button"
+            aria-label="Закрыть форму записи"
+            data-form-close
+            data-modal-initial-focus
+          >
+            ×
+          </button>
+        </div>
+        <div class="modal__content">
+          <form class="booking-form" data-form data-state="idle">
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="name">Имя</label>
+              <input
+                class="booking-form__input"
+                type="text"
+                id="name"
+                name="name"
+                autocomplete="name"
+                required
+                aria-describedby="name-error"
+              />
+              <span
+                class="booking-form__error"
+                id="name-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="phone">Телефон</label>
+              <input
+                class="booking-form__input"
+                type="tel"
+                id="phone"
+                name="phone"
+                autocomplete="tel"
+                placeholder="+3 800 000 00 00"
+                required
+                aria-describedby="phone-error"
+              />
+              <span
+                class="booking-form__error"
+                id="phone-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label
+                class="booking-form__label"
+                id="category-label"
+                for="category"
+              >
+                Категория врача
+              </label>
+              <div class="booking-form__select" data-select>
+                <select
+                  class="booking-form__input booking-form__input--native"
+                  id="category"
+                  name="category"
+                  required
+                  aria-describedby="category-error"
+                  aria-labelledby="category-label"
+                >
+                  <option value="registry">Регистратура</option>
+                  <option value="therapy">Терапевт</option>
+                  <option value="pediatrics">Педиатр</option>
+                  <option value="dermatology">Дерматолог</option>
+                  <option value="cardiology">Кардиолог</option>
+                  <option value="endocrinology">Эндокринолог</option>
+                  <option value="neurology">Невролог</option>
+                  <option value="psychotherapy">Психотерапевт</option>
+                  <option value="ophthalmology">Офтальмолог</option>
+                </select>
+                <button
+                  class="booking-form__select-trigger"
+                  type="button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-labelledby="category-label"
+                  data-select-trigger
+                >
+                  <span data-select-value>Регистратура</span>
+                </button>
+                <div class="booking-form__select-modal" data-select-modal>
+                  <div
+                    class="booking-form__select-backdrop"
+                    data-select-close
+                  ></div>
+                  <div class="booking-form__select-sheet">
+                    <div class="booking-form__select-sheet-header">
+                      <span class="booking-form__select-sheet-title">
+                        Категория врача
+                      </span>
+                    </div>
+                    <div
+                      class="booking-form__select-list"
+                      role="listbox"
+                      aria-labelledby="category-label"
+                      tabindex="-1"
+                      data-select-list
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <span
+                class="booking-form__error"
+                id="category-error"
+                role="alert"
+              ></span>
+            </div>
+            <div class="booking-form__group">
+              <label class="booking-form__label" for="comment"
+                >Комментарий</label
+              >
+              <textarea
+                class="booking-form__input"
+                id="comment"
+                name="comment"
+                rows="4"
+                placeholder="Опишите симптомы или вопрос для врача."
+                aria-describedby="comment-help"
+              ></textarea>
+              <span class="booking-form__help" id="comment-help">
+                Это поможет врачу подготовиться к консультации.
+              </span>
+            </div>
+            <div class="booking-form__consent">
+              <input
+                class="booking-form__checkbox"
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+                aria-describedby="consent-error"
+              />
+              <label class="booking-form__label" for="consent">
+                Я согласен(а) на обработку персональных данных
+              </label>
+            </div>
+            <span
+              class="booking-form__error"
+              id="consent-error"
+              role="alert"
+            ></span>
+            <div class="booking-form__actions">
+              <button class="booking-form__submit" type="submit">
+                Отправить заявку
+              </button>
+              <span
+                class="booking-form__status"
+                role="status"
+                aria-live="polite"
+              >
+                Заполните форму, чтобы записаться
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
+</html>

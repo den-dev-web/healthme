@@ -1,0 +1,10 @@
+.js-enabled [data-reveal][data-reveal-ready="true"] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.js-enabled [data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
